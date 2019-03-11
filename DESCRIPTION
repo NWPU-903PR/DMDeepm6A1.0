@@ -1,0 +1,11 @@
+Package: DMDeepm6A
+Type: Package
+Title: Identify single base m6A and DM m6A from MeRIP-Seq data
+Version: 1.0.0
+Author: Songyao Zhang
+Maintainer: Songyao Zhang <zsynwpu@gmail.com>
+Description: Identify single base m6A and differential methylation m6A
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
+Depends: Guitar, exomePeak, keras, QNB, DESeq, TxDb.Hsapiens.UCSC.hg19.knownGene, BSgenome.Hsapiens.UCSC.hg19, org.Hs.eg.db

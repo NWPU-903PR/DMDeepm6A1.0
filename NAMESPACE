@@ -1,0 +1,4 @@
+exportPattern("^[[:alpha:]]+")
+export(dmdeepm6A)
+export(deepm6A)
+export(dmtest)
