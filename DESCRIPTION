@@ -1,7 +1,7 @@
 Package: DMDeepm6A
 Type: Package
 Title: Identify single base m6A and DM m6A from MeRIP-Seq data
-Version: 1.0.0
+Version: 1.0.1
 Author: Songyao Zhang
 Maintainer: Songyao Zhang <zsynwpu@gmail.com>
 Description: Identify single base m6A and differential methylation m6A
