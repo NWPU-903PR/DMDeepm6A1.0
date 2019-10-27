@@ -27,7 +27,7 @@
 
   gc()
 
-  ID_negative <- (ba$strand=="-")
+  ID_negative <- which(ba$strand=="-")
   ba$pos[ID_negative] <- ba$pos[ID_negative] + ba$qwidth[ID_negative] - 1
 
   rm(ID_negative)
