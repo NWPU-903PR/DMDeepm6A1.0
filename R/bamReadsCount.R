@@ -18,6 +18,7 @@
 
   # MAPQ filter
   ba$mapq[which(is.na(ba$mapq))] <- 255
+  ba$mapq[which(is.na(ba$pos))] <- 0
   ba$rname <- ba$rname[ba$mapq > minimal_alignment_MAPQ]
   ba$strand <- ba$strand[ba$mapq > minimal_alignment_MAPQ]
   ba$pos <- ba$pos[ba$mapq > minimal_alignment_MAPQ]
