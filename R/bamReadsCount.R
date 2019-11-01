@@ -19,12 +19,16 @@
   # MAPQ filter
   ba$mapq[which(is.na(ba$mapq))] <- 255
   ba$mapq[which(is.na(ba$pos))] <- 0
-  ba$rname <- ba$rname[ba$mapq > minimal_alignment_MAPQ]
-  ba$strand <- ba$strand[ba$mapq > minimal_alignment_MAPQ]
-  ba$pos <- ba$pos[ba$mapq > minimal_alignment_MAPQ]
-  ba$qwidth <- ba$qwidth[ba$mapq > minimal_alignment_MAPQ]
-  ba$mapq <- ba$mapq[ba$mapq > minimal_alignment_MAPQ]
+  ba$rname <- ba$rname[which(ba$mapq > minimal_alignment_MAPQ)]
+  ba$strand <- ba$strand[which(ba$mapq > minimal_alignment_MAPQ)]
+  ba$pos <- ba$pos[which(ba$mapq > minimal_alignment_MAPQ)]
+  ba$qwidth <- ba$qwidth[which(ba$mapq > minimal_alignment_MAPQ)]
+  ba$mapq <- ba$mapq[which(ba$mapq > minimal_alignment_MAPQ)]
   total_reads_count_filtered <- length(ba$pos)
+
+  ## process qwidth
+  read_length <- round(median(ba$qwidth, na.rm = TRUE))
+  ba$qwidth[which(is.na(ba$qwidth))] <- read_length
 
   gc()
 
@@ -34,8 +38,13 @@
   rm(ID_negative)
   gc()
 
+  id_filter <- (!is.na(ba$rname)) & (!is.na(ba$pos)) & (!is.na(ba$strand))
+  ba$rname <- ba$rname[id_filter]
+  ba$pos <- ba$pos[id_filter]
+  ba$strand <- ba$strand[id_filter]
+
   gr <- GRanges(seqnames = ba$rname,
-                ranges = IRanges(start=ba$pos, width = 1),
+                ranges = IRanges(start=ba$pos, end = ba$pos, width = 1),
                 strand = ba$strand)
 
   rm(ba)
