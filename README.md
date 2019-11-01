@@ -1,9 +1,9 @@
 # DMDeepm6A1.0
 A R package used to identify single base resolution m6A and differential m6A methylation site from MeRIP-seq data version 1.0.
 
-Version: 1.0.2
+Version: 1.0.3
 
-Date: 2019-10-31
+Date: 2019-11-01
 
 Author: Songyao Zhang zsynwpu@gmail.com, Jia Meng Jia.Meng@xjtlu.edu.cn
 
