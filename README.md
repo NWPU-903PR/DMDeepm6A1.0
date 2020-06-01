@@ -45,9 +45,8 @@ BiocManager::install("org.Hs.eg.db", version = "3.8")
 
 At last, DMDeepm6A can be installed as:
 
-if (!requireNamespace("devtools", quietly = TRUE))
-    install.packages("devtools")
-    
+if (!requireNamespace("devtools", quietly = TRUE))    
+    install.packages("devtools")    
 devtools::install_github("NWPU-903PR/DMDeepm6A")
 
 # Toy Example diff sites calling
