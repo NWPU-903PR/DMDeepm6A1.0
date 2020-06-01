@@ -33,8 +33,6 @@ install_keras()
 
 2.Other packages
 
-install.packages("QNB")
-
 if (!requireNamespace("BiocManager", quietly = TRUE))  
      install.packages("BiocManager")  
 BiocManager::install("exomePeak", version = "3.8")  
@@ -48,6 +46,8 @@ At last, DMDeepm6A can be installed as:
 if (!requireNamespace("devtools", quietly = TRUE))    
      install.packages("devtools")    
 devtools::install_github("NWPU-903PR/DMDeepm6A1.0")
+
+The "exomePeak" package is not available from Bioconductor for R version >= 4.0. Please install "exomePeak" from https://github.com/ZW-xjtlu/exomePeak for R4.0 or above.
 
 # Toy Example diff sites calling
 
