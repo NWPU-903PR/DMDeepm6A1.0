@@ -36,7 +36,7 @@ install_keras()
 install.packages("QNB")
 
 if (!requireNamespace("BiocManager", quietly = TRUE))  
-  install.packages("BiocManager")  
+    install.packages("BiocManager")  
 BiocManager::install("exomePeak", version = "3.8")  
 BiocManager::install("Guitar", version = "3.8")  
 BiocManager::install("DESeq", version = "3.8")  
