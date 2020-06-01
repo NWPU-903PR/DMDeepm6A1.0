@@ -36,7 +36,7 @@ install_keras()
 install.packages("QNB")
 
 if (!requireNamespace("BiocManager", quietly = TRUE))  
-    install.packages("BiocManager")  
+     install.packages("BiocManager")  
 BiocManager::install("exomePeak", version = "3.8")  
 BiocManager::install("Guitar", version = "3.8")  
 BiocManager::install("DESeq", version = "3.8")  
@@ -46,7 +46,7 @@ BiocManager::install("org.Hs.eg.db", version = "3.8")
 At last, DMDeepm6A can be installed as:
 
 if (!requireNamespace("devtools", quietly = TRUE))    
-    install.packages("devtools")    
+     install.packages("devtools")    
 devtools::install_github("NWPU-903PR/DMDeepm6A")
 
 # Toy Example diff sites calling
