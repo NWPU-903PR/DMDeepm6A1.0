@@ -13,7 +13,7 @@ The package is developed for the single base resolution m6A sites identification
 
 License: GPL-2
 
-Depends: Guitar, exomePeak, keras, QNB, DESeq, TxDb.Hsapiens.UCSC.hg19.knownGene, BSgenome.Hsapiens.UCSC.hg19, org.Hs.eg.db
+Depends: exomePeak, keras, DESeq, TxDb.Hsapiens.UCSC.hg19.knownGene, BSgenome.Hsapiens.UCSC.hg19, org.Hs.eg.db
 
 # Installation
 
@@ -35,11 +35,10 @@ install_keras()
 
 if (!requireNamespace("BiocManager", quietly = TRUE))  
      install.packages("BiocManager")  
-BiocManager::install("exomePeak", version = "3.8")  
-BiocManager::install("Guitar", version = "3.8")  
-BiocManager::install("DESeq", version = "3.8")  
-BiocManager::install("BSgenome.Hsapiens.UCSC.hg19", version = "3.8")  
-BiocManager::install("org.Hs.eg.db", version = "3.8")  
+BiocManager::install("exomePeak")   
+BiocManager::install("DESeq")  
+BiocManager::install("BSgenome.Hsapiens.UCSC.hg19")  
+BiocManager::install("org.Hs.eg.db")  
 
 At last, DMDeepm6A can be installed as:
 
