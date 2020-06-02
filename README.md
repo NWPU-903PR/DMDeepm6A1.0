@@ -35,10 +35,7 @@ install_keras()
 
 if (!requireNamespace("BiocManager", quietly = TRUE))  
      install.packages("BiocManager")  
-BiocManager::install("exomePeak")   
-BiocManager::install("DESeq")  
-BiocManager::install("BSgenome.Hsapiens.UCSC.hg19")  
-BiocManager::install("org.Hs.eg.db")  
+BiocManager::install(c("exomePeak", "DESeq", "BSgenome.Hsapiens.UCSC.hg19", "org.Hs.eg.db"))   
 
 At last, DMDeepm6A can be installed as:
 
