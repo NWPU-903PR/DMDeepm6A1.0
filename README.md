@@ -17,7 +17,7 @@ Depends: exomePeak, keras, DESeq, TxDb.Hsapiens.UCSC.hg19.knownGene, BSgenome.Hs
 
 # Installation
 
-DMDeepm6A depends on Guitar, exomePeak, keras, QNB, DESeq, TxDb.Hsapiens.UCSC.hg19.knownGene, BSgenome.Hsapiens.UCSC.hg19, org.Hs.eg.dbr R packages and please make sure install them before installing DMDeepm6A.
+DMDeepm6A depends on exomePeak, keras, DESeq, TxDb.Hsapiens.UCSC.hg19.knownGene, BSgenome.Hsapiens.UCSC.hg19, org.Hs.eg.dbr R packages and please make sure install them before installing DMDeepm6A.
 
 1. Keras installation
 Make sure Anaconda is installed for windows systerm
@@ -35,7 +35,7 @@ install_keras()
 
 if (!requireNamespace("BiocManager", quietly = TRUE))  
      install.packages("BiocManager")  
-BiocManager::install(c("exomePeak", "DESeq", "BSgenome.Hsapiens.UCSC.hg19", "org.Hs.eg.db"), version = "3.9")   
+BiocManager::install(c("exomePeak", "DESeq", "TxDb.Hsapiens.UCSC.hg19.knownGene", "BSgenome.Hsapiens.UCSC.hg19", "org.Hs.eg.db"), version = "3.9")   
 
 At last, DMDeepm6A can be installed as:
 
