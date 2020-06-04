@@ -60,7 +60,8 @@ pip install keras==2.2.0
 2.	Other required Bioconductor packages
 ```{r, eval=FALSE}
 if (!requireNamespace("BiocManager", quietly = TRUE))    
-install.packages("BiocManager")    
+install.packages("BiocManager")
+
 BiocManager::install(c("exomePeak", "DESeq", "TxDb.Hsapiens.UCSC.hg19.knownGene",    
 "BSgenome.Hsapiens.UCSC.hg19", "org.Hs.eg.db"), version = "3.9")
 ```
@@ -70,7 +71,8 @@ The "exomePeak" package is not available in Bioconductor3.10 for R version >= 4.
 3.	DMDeepm6A installation    
 ```
 if (!requireNamespace("devtools", quietly = TRUE))    
-install.packages("devtools")    
+install.packages("devtools")
+
 devtools::install_github("NWPU-903PR/DMDeepm6A1.0")
 ```
 
