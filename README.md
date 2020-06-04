@@ -17,7 +17,7 @@ Depends: exomePeak, keras, DESeq, TxDb.Hsapiens.UCSC.hg19.knownGene, BSgenome.Hs
 
 Citation: Song-Yao Z , Shao-Wu Z , Xiao-Nan F , et al. FunDMDeep-m6A: identification and prioritization of functional differential m6A methylation genes [J]. Bioinformatics, 2019(14):14.
 
-## Installation
+## 1. Installation
 
 DMDeepm6A depends on exomePeak, keras, DESeq, TxDb.Hsapiens.UCSC.hg19.knownGene, BSgenome.Hsapiens.UCSC.hg19, org.Hs.eg.dbr R packages and please make sure install them before installing DMDeepm6A.
 
@@ -25,8 +25,8 @@ DMDeepm6A depends on exomePeak, keras, DESeq, TxDb.Hsapiens.UCSC.hg19.knownGene,
 Make sure Anaconda is installed for windows system for Python 3.x (https://www.anaconda.com/download/#windows) before installing Keras ("Anaconda3-5.3.0-Windows-x86_64" is suggested). Then follow the instruction on web (https://keras.rstudio.com/) to install keras in R (please do not install the current version, tensorflow version 1.10 and keras version 2.2.0 is suggested) or install in R as following:
 
 ```{r, eval=FALSE}
-if (!requireNamespace("devtools", quietly = TRUE))
-  install.packages("devtools")
+if (!requireNamespace("devtools", quietly = TRUE))    
+install.packages("devtools")
 
 devtools::install_version("reticulate", version = "1.10",repos = " https://cloud.r-project.org/")
 devtools::install_version("tensorflow", version = "1.10",repos = " https://cloud.r-project.org/")
@@ -59,16 +59,17 @@ pip install keras==2.2.0
 
 2.	Other required Bioconductor packages
 ```{r, eval=FALSE}
-if (!requireNamespace("BiocManager", quietly = TRUE))
+if (!requireNamespace("BiocManager", quietly = TRUE))    
 install.packages("BiocManager")    
-BiocManager::install(c("exomePeak", "DESeq", "TxDb.Hsapiens.UCSC.hg19.knownGene", "BSgenome.Hsapiens.UCSC.hg19", "org.Hs.eg.db"), version = "3.9")
+BiocManager::install(c("exomePeak", "DESeq", "TxDb.Hsapiens.UCSC.hg19.knownGene",    
+"BSgenome.Hsapiens.UCSC.hg19", "org.Hs.eg.db"), version = "3.9")
 ```
 
 The "exomePeak" package is not available in Bioconductor3.10 for R version >= 4.0. Please install "exomePeak" from https://github.com/ZW-xjtlu/exomePeak for Bioconductor3.10 and R4.0 or above.
 
 3.	DMDeepm6A installation    
 ```
-if (!requireNamespace("devtools", quietly = TRUE))
+if (!requireNamespace("devtools", quietly = TRUE))    
 install.packages("devtools")    
 devtools::install_github("NWPU-903PR/DMDeepm6A1.0")
 ```
@@ -79,6 +80,7 @@ devtools::install_github("NWPU-903PR/DMDeepm6A1.0")
 
 \# get input bam
 
+```
 ip_bam1 <- system.file("extdata", "treated_ip1.bam", package="DMDeepm6A")  
 ip_bam2 <- system.file("extdata", "treated_ip2.bam", package="DMDeepm6A")  
 ip_bam3 <- system.file("extdata", "untreated_ip1.bam", package="DMDeepm6A")  
@@ -90,25 +92,32 @@ input_bam4 <- system.file("extdata", "untreated_input2.bam", package="DMDeepm6A"
 
 ip_bams <- c(ip_bam1, ip_bam2, ip_bam3, ip_bam4)  
 input_bams <- c(input_bam1, input_bam2, input_bam3, input_bam4)  
+```
 
 \# get sample condition
 
+```
 sample_condition <- c("treated", "treated", "untreated", "untreated")
+```
 
 \# get genome annotation, generally, you can leave this default if you use the default hg19 genome
 
 \# we use a toy gtf here to make this example run faster.
 
+```
 gft_genome <- system.file("extdata", "genes.gtf", package="DMDeepm6A")
+```
 
 \# diff peak calling
 
+```
 re <- dmdeepm6A(ip_bams = ip_bams,  
                 input_bams = input_bams,  
                 sample_conditions = sample_condition,    
                 gft_genome = gft_genome)  
+```
 
-# Toy Example m6A site calling
+## 3. Toy Example m6A site calling
 
 \# do only peak calling for several replicates
 
@@ -132,7 +141,7 @@ re <- dmdeepm6A(ip_bams = ip_bams,
                 gft_genome = gft_genome)  
 ```
 
-## Example code for other species
+## 4. Example code for other species
 \# An genome input formate example for rat rn5 genome
 
 \# not run
