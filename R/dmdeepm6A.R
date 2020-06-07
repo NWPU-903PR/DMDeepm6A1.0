@@ -115,6 +115,8 @@ dmdeepm6A <- function(ip_bams,
   }
   parameter$exomepeak_path <- exomepeak_path
 
+  gc()
+
 
   ## get size factor
   size_factor <- .getsf(exomepeak_path, sample_conditions)
@@ -155,6 +157,10 @@ dmdeepm6A <- function(ip_bams,
                         minimal_gene_length = minimal_gene_length,
                         sig_site_thresh = sig_site_thresh,
                         size_factor = size_factor[i,])
+
+    rm(sig_peak)
+    gc()
+
   }
 
   Diff <- list()

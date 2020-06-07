@@ -59,8 +59,23 @@
   total_reads_count_unimapped <- length(gr)
 
   # shift
-  grt <- mapToTranscripts(gr, psuedoGene, ignore.strand = T)
-  strand(grt) <- strand(gr)[mcols(grt)$xHits]
+  sep_ind <- length(gr)
+  sep_ind <- seq(1, sep_ind, by = sep_ind/4)
+  sep_ind <- c(sep_ind, length(gr))
+
+  grt0 <- GRanges()
+  for (i in 1:4) {
+
+    grt <- mapToTranscripts(gr[sep_ind[i]:sep_ind[i+1]], psuedoGene, ignore.strand = T)
+    strand(grt) <- strand(gr[sep_ind[i]:sep_ind[i+1]])[mcols(grt)$xHits]
+    grt0 <- c(grt0, grt)
+
+  }
+  grt <- grt0
+
+  rm(grt0)
+  gc()
+
   grt <- resize(grt, width = fragment_length, fix="start", ignore.strand = F)
 
   # bin reads count
