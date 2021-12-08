@@ -35,13 +35,13 @@ devtools::install_version("keras", version = "2.2.0",repos = "https://cloud.r-pr
 ```
 
 You may set your convenient CRAN mirrors by setting `repos`.    
-Then create the required virtual environment and install corresponding version of keras and tensorflow (e.g., tensorflow1.10, keras2.2.0) as in your R, as following (for Windows users, you can set this in Anaconda Prompt):
+Then create the required virtual environment and install corresponding version of keras and tensorflow (e.g., tensorflow1.10, keras2.2.0), as following (for Windows users, you can set this in Anaconda Prompt):
 
 ```
 conda create -n r-tensorflow tensorflow==1.10 keras==2.2.0 numpy==1.14.5
 ```
 
-` r-tensorflow ` is the name of your virtual environment created by keras in R. Then open R to check whether the keras is istalled succesfully:
+` r-tensorflow ` is the name of your virtual environment created by keras in R. For windows users, please make sure your Anaconda path is added to environment variable. Then open R to check whether the keras is istalled succesfully:
 
 ```
 library(keras)
@@ -50,12 +50,14 @@ is_keras_available()
 [1] TRUE
 
 ```
-
-And install the suggested version:
+For Linux/ubuntu users, In R, ` reticulate ` will firstly search ` ~/.virtualenvs ` for python, then to make sure your R use the python installed in your conda env, you may need to firstly setup the ` RETICULATE_PYTHON ` before library and use ` keras ` and ` DMDeepm6A ` package:
 
 ```
-pip install tensorflow==1.10
-pip install keras==2.2.0
+Sys.setenv(RETICULATE_PYTHON = "Path_To_Anaconda/envs/r-tensorflow/bin/python")
+library(keras)
+is_keras_available()
+
+[1] TRUE
 ```
 
 2.	Other required Bioconductor packages
@@ -64,10 +66,17 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 
 BiocManager::install(c("exomePeak", "DESeq", "TxDb.Hsapiens.UCSC.hg19.knownGene",    
-                       "BSgenome.Hsapiens.UCSC.hg19", "org.Hs.eg.db"), version = "3.9")
+                       "BSgenome.Hsapiens.UCSC.hg19", "org.Hs.eg.db"))
 ```
 
-The "exomePeak" package is not available in Bioconductor3.10 for R version >= 4.0. Please install "exomePeak" from https://github.com/ZW-xjtlu/exomePeak for Bioconductor3.10 and R4.0 or above.
+The "exomePeak" package is not available in Bioconductor3.10 for R version >= 4.0. Please install "exomePeak" from https://github.com/ZW-xjtlu/exomePeak for Bioconductor3.10 and R4.0 or above. And if the R version R>=4.0, the DESeq package should be installed by
+
+```{r, eval=FALSE}
+##for Linux installation
+install.packages("https://www.bioconductor.org/packages/3.11/bioc/src/contrib/DESeq_1.39.0.tar.gz", repos = NULL, type="source")
+##for Windows installation
+install.packages("https://www.bioconductor.org/packages/3.11/bioc/bin/windows/contrib/4.0/DESeq_1.39.0.zip", repos = NULL, type="source")
+```
 
 3.	DMDeepm6A installation    
 ```
