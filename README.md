@@ -28,26 +28,27 @@ Make sure Anaconda is installed for windows system for Python 3.x (https://www.a
 if (!requireNamespace("devtools", quietly = TRUE))    
     install.packages("devtools")
 
-devtools::install_version("reticulate", version = "1.10",repos = " https://cloud.r-project.org/")
-devtools::install_version("tensorflow", version = "1.10",repos = " https://cloud.r-project.org/")
-devtools::install_version("keras", version = "2.2.0",repos = " https://cloud.r-project.org/")
+devtools::install_version("reticulate", version = "1.10",repos = "https://cloud.r-project.org/")
+devtools::install_version("tensorflow", version = "1.10",repos = "https://cloud.r-project.org/")
+devtools::install_version("keras", version = "2.2.0",repos = "https://cloud.r-project.org/")
 
-library(keras)
-install_keras()
 ```
 
 You may set your convenient CRAN mirrors by setting `repos`.    
-Then make sure the version of keras and tensorflow installed in your virtual environment are the same (e.g., tensorflow1.10, keras2.2.0) as in your R. For Windows users, you can set this via Anaconda as following:
+Then create the required virtual environment and install corresponding version of keras and tensorflow (e.g., tensorflow1.10, keras2.2.0) as in your R, as following (for Windows users, you can set this in Anaconda Prompt):
 
 ```
-activate r-tensorflow
+conda create -n r-tensorflow tensorflow==1.10 keras==2.2.0 numpy==1.14.5
 ```
 
-` r-tensorflow ` is the name of your virtual environment created by keras in R. Then uninstall current version of tensorflow and keras:
+` r-tensorflow ` is the name of your virtual environment created by keras in R. Then open R to check whether the keras is istalled succesfully:
 
 ```
-pip uninstall tensorflow
-pip uninstall keras
+library(keras)
+is_keras_available()
+
+[1] TRUE
+
 ```
 
 And install the suggested version:
