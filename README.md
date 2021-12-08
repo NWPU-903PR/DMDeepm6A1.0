@@ -22,7 +22,7 @@ Citation: Song-Yao Z , Shao-Wu Z , Xiao-Nan F , et al. FunDMDeep-m6A: identifica
 DMDeepm6A depends on exomePeak, keras, DESeq, TxDb.Hsapiens.UCSC.hg19.knownGene, BSgenome.Hsapiens.UCSC.hg19, org.Hs.eg.dbr R packages and please make sure install them before installing DMDeepm6A.
 
 1.	Keras installation    
-Make sure Anaconda is installed for windows system for Python 3.x (https://www.anaconda.com/download/#windows) before installing Keras ("Anaconda3-5.3.0-Windows-x86_64" is suggested). Then follow the instruction on web (https://keras.rstudio.com/) to install keras in R (please do not install the current version, tensorflow version 1.10 and keras version 2.2.0 is suggested) or install in R as following:
+Make sure Anaconda is installed for windows system for Python 3.x (https://www.anaconda.com/download/#windows) before installing Keras ("Anaconda3-5.3.0-Windows-x86_64" is suggested). Then follow the instruction on web (https://keras.rstudio.com/) to install keras (please do not install the current version, tensorflow version 1.10 and keras version 2.2.0 is suggested) or install in R as following:
 
 ```{r, eval=FALSE}
 if (!requireNamespace("devtools", quietly = TRUE))    
@@ -35,25 +35,24 @@ devtools::install_version("keras", version = "2.2.0",repos = "https://cloud.r-pr
 ```
 
 You may set your convenient CRAN mirrors by setting `repos`.    
-Then create the required virtual environment and install corresponding version of keras and tensorflow (e.g., tensorflow1.10, keras2.2.0), as following (for Windows users, you can set this in Anaconda Prompt):
+Then create the required virtual environment and install corresponding version of keras and tensorflow (e.g., tensorflow1.10, keras2.2.0) using conda, for Windows users, you can set this in Anaconda Prompt:
 
 ```
 conda create -n r-tensorflow tensorflow==1.10 keras==2.2.0 numpy==1.14.5
 ```
 
-` r-tensorflow ` is the name of your virtual environment created by keras in R. For windows users, please make sure your Anaconda path is added to environment variable. Then open R to check whether the keras is istalled succesfully:
+` r-tensorflow ` is the name of your virtual environment will be used by keras in R. For windows users, please make sure your Anaconda path is added to environment variable. Then open R to check whether the keras is available:
 
 ```
 library(keras)
 is_keras_available()
 
 [1] TRUE
+```
+For Linux/ubuntu users, ` reticulate ` will firstly search ` ~/.virtualenvs ` for python, then to make sure your R use the python installed in your conda env, you may need to firstly setup the ` RETICULATE_PYTHON ` before library and use ` keras ` and ` DMDeepm6A `:
 
 ```
-For Linux/ubuntu users, In R, ` reticulate ` will firstly search ` ~/.virtualenvs ` for python, then to make sure your R use the python installed in your conda env, you may need to firstly setup the ` RETICULATE_PYTHON ` before library and use ` keras ` and ` DMDeepm6A ` package:
-
-```
-Sys.setenv(RETICULATE_PYTHON = "Path_To_Anaconda/envs/r-tensorflow/bin/python")
+Sys.setenv(RETICULATE_PYTHON = "Path_To_conda/envs/r-tensorflow/bin/python")
 library(keras)
 is_keras_available()
 
@@ -69,7 +68,7 @@ BiocManager::install(c("exomePeak", "DESeq", "TxDb.Hsapiens.UCSC.hg19.knownGene"
                        "BSgenome.Hsapiens.UCSC.hg19", "org.Hs.eg.db"))
 ```
 
-The "exomePeak" package is not available in Bioconductor3.10 for R version >= 4.0. Please install "exomePeak" from https://github.com/ZW-xjtlu/exomePeak for Bioconductor3.10 and R4.0 or above. And if the R version R>=4.0, the DESeq package should be installed by
+The "exomePeak" and "DESeq" packages are not available in Bioconductor3.10 for R>=4.0. If you are using R4.0 or above, Please install "exomePeak" from https://github.com/ZW-xjtlu/exomePeak. And install the "DESeq" package by:
 
 ```{r, eval=FALSE}
 ##for Linux installation
@@ -93,6 +92,10 @@ devtools::install_github("NWPU-903PR/DMDeepm6A1.0")
 \# get input bam
 
 ```
+Sys.setenv(RETICULATE_PYTHON = "Path_To_conda/envs/r-tensorflow/bin/python") ## For Linux/ubuntu
+library(DMDeepm6A)
+library(keras)
+
 ip_bam1 <- system.file("extdata", "treated_ip1.bam", package="DMDeepm6A")  
 ip_bam2 <- system.file("extdata", "treated_ip2.bam", package="DMDeepm6A")  
 ip_bam3 <- system.file("extdata", "untreated_ip1.bam", package="DMDeepm6A")  
