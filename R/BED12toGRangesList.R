@@ -15,7 +15,7 @@ BED12toGRangesList <- function(filepath, header=FALSE) {
   no_tx = length(a[,1])
   tx_id = 1:no_tx;
   tx_name = paste("line_",1:no_tx,sep="")
-  tx_chrom = a[,1]
+  tx_chrom = as.character(a[,1])
   tx_strand = a[,6]
   tx_start = a[,2]+1
   tx_end = a[,3]
