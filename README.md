@@ -129,7 +129,9 @@ gft_genome <- system.file("extdata", "genes.gtf", package="DMDeepm6A")
 re <- dmdeepm6A(ip_bams = ip_bams,  
                 input_bams = input_bams,  
                 sample_conditions = sample_condition,    
-                gft_genome = gft_genome)  
+                gft_genome = gft_genome,
+                BSgenome = BSgenome.Hsapiens.UCSC.hg19,
+                egSYMBOL = org.Hs.egSYMBOL)  
 ```
 Please note that, if you are not using default hg19 genome, you need to input at least both the genome annotation (txdb or gft_genome) and sequence (BSgenome). Please see section 4 for more details.
 
@@ -154,7 +156,9 @@ input_bams <- c(input_bam1, input_bam2)
 ```
 re <- dmdeepm6A(ip_bams = ip_bams,  
                 input_bams = input_bams,  
-                gft_genome = gft_genome)  
+                gft_genome = gft_genome,
+                BSgenome = BSgenome.Hsapiens.UCSC.hg19,
+                egSYMBOL = org.Hs.egSYMBOL)  
 ```
 Please note that, if you are not using default hg19 genome, you need to input at least both the genome annotation (txdb or gft_genome) and sequence (BSgenome). Please see section 4 for more details.
 
