@@ -52,14 +52,13 @@ deepm6A <- function(IP_bam,
   parameter$output_filepath <- output_filepath
   parameter$model_filepath <- model_filepath
 
-
-  if (!is.na(txdb)&!is.na(BSgenome)&!is.na(egSYMBOL)) {default_genome <- FALSE}
+  ## get genome
+  if (!(is.na(txdb) & is.na(gft_genome))) {
+    if (is.na(BSgenome)) {stop("BSgenome should not be NA if the genome is not defalt hg19")}
+    default_genome <- FALSE
+  }
   if (default_genome) {
-    if (!is.na(gft_genome)) {
-      txdb <- makeTxDbFromGFF(gft_genome, format = "gtf")
-    } else {
-      txdb <- TxDb.Hsapiens.UCSC.hg19.knownGene
-    }
+    txdb <- TxDb.Hsapiens.UCSC.hg19.knownGene
     BSgenome <- BSgenome.Hsapiens.UCSC.hg19
     egSYMBOL <- org.Hs.egSYMBOL
     parameter$txdb <- txdb
@@ -67,6 +66,10 @@ deepm6A <- function(IP_bam,
     parameter$egSYMBOL <- egSYMBOL
   }
 
+  if (!is.na(gft_genome) & is.na(txdb)) {
+    txdb <- makeTxDbFromGFF(gft_genome, format = "gtf")
+    parameter$txdb <- txdb
+  }
 
   ## get exomepeak peak
   if (is.na(exomepeak_path))

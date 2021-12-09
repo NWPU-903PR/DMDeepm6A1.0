@@ -92,16 +92,19 @@
   position[position != 0] <- 1
   xls <- cbind(xls, position)
 
-  x = egSYMBOL
-  mapped_genes <- mappedkeys(x)
-  result <- as.list(x[mapped_genes])
-  entrez_id <- as.numeric(names(result))  # entrez ID
-  gene_symbol <- as.character(result)     # gene symbol
-  ID_convert <- data.frame(entrez_id,gene_symbol)
-  id <- xls$name
-  gene_symbol <- as.vector(ID_convert$gene_symbol[match(id,ID_convert$entrez_id)])
-
-  if (sum(is.na(gene_symbol)) == length(gene_symbol)) {gene_symbol <- id}
+  if (!is.na(egSYMBOL)) {
+    x = egSYMBOL
+    mapped_genes <- mappedkeys(x)
+    result <- as.list(x[mapped_genes])
+    entrez_id <- as.numeric(names(result))  # entrez ID
+    gene_symbol <- as.character(result)     # gene symbol
+    ID_convert <- data.frame(entrez_id,gene_symbol)
+    id <- xls$name
+    gene_symbol <- as.vector(ID_convert$gene_symbol[match(id,ID_convert$entrez_id)])
+    if (sum(is.na(gene_symbol)) == length(gene_symbol)) {gene_symbol <- id}
+  } else {
+    gene_symbol <- xls$name
+  }
 
   xls <- cbind(xls, gene_symbol)
   names(xls)[ncol(xls)] <- "GeneSymbol"

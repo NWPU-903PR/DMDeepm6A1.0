@@ -58,7 +58,10 @@ dmdeepm6A <- function(ip_bams,
   parameter$model_filepath <- model_filepath
 
   ## get genome
-  if (!is.na(txdb)) {default_genome <- FALSE}
+  if (!(is.na(txdb) & is.na(gft_genome))) {
+    if (is.na(BSgenome)) {stop("BSgenome should not be NA if the genome is not defalt hg19")}
+    default_genome <- FALSE
+    }
   if (default_genome) {
     txdb <- TxDb.Hsapiens.UCSC.hg19.knownGene
     BSgenome <- BSgenome.Hsapiens.UCSC.hg19
@@ -115,8 +118,6 @@ dmdeepm6A <- function(ip_bams,
   }
   parameter$exomepeak_path <- exomepeak_path
 
-  gc()
-
 
   ## get size factor
   size_factor <- .getsf(exomepeak_path, sample_conditions)
@@ -157,10 +158,6 @@ dmdeepm6A <- function(ip_bams,
                         minimal_gene_length = minimal_gene_length,
                         sig_site_thresh = sig_site_thresh,
                         size_factor = size_factor[i,])
-
-    rm(sig_peak)
-    gc()
-
   }
 
   Diff <- list()
