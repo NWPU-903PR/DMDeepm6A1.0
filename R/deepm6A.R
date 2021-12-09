@@ -53,7 +53,7 @@ deepm6A <- function(IP_bam,
   parameter$model_filepath <- model_filepath
 
   ## get genome
-  if (!(is.na(txdb) & is.na(gft_genome))) {
+  if ((!is.na(txdb) | !is.na(gft_genome))) {
     if (is.na(BSgenome)) {stop("BSgenome should not be NA if the genome is not defalt hg19")}
     default_genome <- FALSE
   }
