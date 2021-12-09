@@ -1,9 +1,9 @@
 # DMDeepm6A1.0
 A R package used to identify single base resolution m6A and differential m6A methylation site from MeRIP-seq data version 1.0.
 
-Version: 1.0.5
+Version: 1.0.6
 
-Date: 2019-06-04
+Date: 2021-12-09
 
 Author: Songyao Zhang zsynwpu@gmail.com, Jia Meng Jia.Meng@xjtlu.edu.cn
 
@@ -131,6 +131,7 @@ re <- dmdeepm6A(ip_bams = ip_bams,
                 sample_conditions = sample_condition,    
                 gft_genome = gft_genome)  
 ```
+Please note that, if you are not using default hg19 genome, you need to input at least both the genome annotation (txdb or gft_genome) and sequence (BSgenome). Please see section 4 for more details.
 
 ## 3. Toy Example m6A site calling
 
@@ -155,6 +156,7 @@ re <- dmdeepm6A(ip_bams = ip_bams,
                 input_bams = input_bams,  
                 gft_genome = gft_genome)  
 ```
+Please note that, if you are not using default hg19 genome, you need to input at least both the genome annotation (txdb or gft_genome) and sequence (BSgenome). Please see section 4 for more details.
 
 ## 4. Example code for other species
 \# An genome input formate example for rat rn5 genome
@@ -170,8 +172,12 @@ txdb <- TxDb.Rnorvegicus.UCSC.rn5.refGene
 library(BSgenome.Rnorvegicus.UCSC.rn5)  
 BSgenome <- BSgenome.Rnorvegicus.UCSC.rn5  
 
+## BSgenome is necessary if the genome is not hg19. If there is no public BSgenome data package for your own genome sequence, you can read your ".fa/.fasta" genome sequence file using readDNAStringSet function (e.g., BSgenome = readDNAStringSet(MyGenomeSeq.fa)), or forge a BSgenome data package following the instruction of "BSgenome" package.
+
 library(org.Rn.eg.db)  
 egSYMBOL <- org.Rn.egSYMBOL  
+
+## You can set egSYMBOL as NA, if there is no public egSYMBOL data package for your own species.
 
 sigpeak <- deepm6A(ip_bam,  
                    input_bam,  
