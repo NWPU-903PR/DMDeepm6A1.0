@@ -70,7 +70,7 @@ The transcriptome used to do the analysis,  usually do not need to input
 The txdb famate genome annotation. You need to input it similar to "TxDb.Hsapiens.UCSC.hg19.knownGene" if DefaultGenome is FALSE.
 }
   \item{BSgenome}{
-The sequence of genome. You need to input it similar to "BSgenome.Hsapiens.UCSC.hg19" if DefaultGenome is FALSE.
+The sequence of genome. You need to input it similar to "BSgenome.Hsapiens.UCSC.hg19" if DefaultGenome is FALSE. If there is no public BSgenome data package for your genome sequence, you can read your ".fa/.fasta" genome sequence file using readDNAStringSet function (e.g., BSgenome = readDNAStringSet(MyGenomeSeq.fa)), or forge a BSgenome data package following the instruction of "BSgenome" package.
 }
   \item{egSYMBOL}{
 The gene name annotation. You need to input it similar to "org.Hs.egSYMBOL" if DefaultGenome is FALSE.
