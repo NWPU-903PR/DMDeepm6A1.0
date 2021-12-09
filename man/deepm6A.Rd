@@ -115,7 +115,9 @@ gft_genome <- system.file("extdata", "genes.gtf", package="DMDeepm6A")
 ## peak calling
 re <- deepm6A(IP_bam = ip_bam,
               Input_bam = input_bam,
-              gft_genome = gft_genome)
+              gft_genome = gft_genome,
+              BSgenome = BSgenome.Hsapiens.UCSC.hg19,
+              egSYMBOL = org.Hs.egSYMBOL)
 
 
 # An genome input formate example for rat rn5 genome
