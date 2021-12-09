@@ -172,12 +172,12 @@ txdb <- TxDb.Rnorvegicus.UCSC.rn5.refGene
 library(BSgenome.Rnorvegicus.UCSC.rn5)  
 BSgenome <- BSgenome.Rnorvegicus.UCSC.rn5  
 ```
-BSgenome is necessary if the genome is not hg19. If there is no public BSgenome data package for your own genome sequence, you can read your ".fa/.fasta" genome sequence file using readDNAStringSet function (e.g., BSgenome = readDNAStringSet(MyGenomeSeq.fa)), or forge a BSgenome data package following the instruction of "BSgenome" package.
+` BSgenome ` is necessary if the genome is not hg19. If there is no public BSgenome data package for your own genome sequence, you can read your ".fa/.fasta" genome sequence file using readDNAStringSet function (e.g., BSgenome = readDNAStringSet(MyGenomeSeq.fa)), or forge a BSgenome data package following the instruction of "BSgenome" package.
 ```
 library(org.Rn.eg.db)  
 egSYMBOL <- org.Rn.egSYMBOL  
 ```
-You can set egSYMBOL as NA, if there is no public egSYMBOL data package for your own species.
+You can set ` egSYMBOL ` as NA, if there is no public egSYMBOL data package for your own species.
 ```
 sigpeak <- deepm6A(ip_bam,  
                    input_bam,  
