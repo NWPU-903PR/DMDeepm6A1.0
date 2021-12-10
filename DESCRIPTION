@@ -8,4 +8,4 @@ Description: Identify single base m6A and differential methylation m6A
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
-Depends: exomePeak, keras, DESeq, TxDb.Hsapiens.UCSC.hg19.knownGene, BSgenome.Hsapiens.UCSC.hg19, org.Hs.eg.db
+Depends: exomePeak, keras, DESeq, TxDb.Hsapiens.UCSC.hg19.knownGene, BSgenome.Hsapiens.UCSC.hg19, org.Hs.eg.db, BSgenome
