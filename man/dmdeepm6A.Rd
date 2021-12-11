@@ -178,7 +178,7 @@ re <- dmdeepm6A(ip_bams = ip_bams,
 # sigpeak <- dmdeepm6A(ip_bam,
 #                      input_bam,
 #                      sample_conditions = sample_conditions,
-#                      DefaultGenome = FALSE,
+#                      default_genome = FALSE,
 #                      txdb = txdb,
 #                      BSgenome = BSgenome,
 #                      egSYMBOL = egSYMBOL)
