@@ -97,7 +97,7 @@ The thresh used to identify whether a candidate DmM site is significantly differ
 \details{
 tx_genes is generated from the TXDB annotation genome you are using. It is saved as "psuedoGene.RData" under the output filepath. You can use it next time when you are using the same genome to save some time of making it from TXDB.
 
-You need to input txdb, BSgenome and egSYMBOL if you do not want to use the default hg19 genome. Generally, you need to install this 3 genome information before you use them.
+You need to input txdb, BSgenome and egSYMBOL if you do not want to use the default hg19 genome. Generally, you need to install this 3 genome information and make sure the chrome names are consistent with your align genome before you use them.
 }
 \value{
 By default, deepm6A will output results both
@@ -175,13 +175,13 @@ re <- dmdeepm6A(ip_bams = ip_bams,
 # library(org.Rn.eg.db)
 # egSYMBOL <- org.Rn.egSYMBOL
 
-# sigpeak <- deepm6A(ip_bam,
-#                    input_bam,
-#                    sample_conditions = sample_conditions,
-#                    DefaultGenome = FALSE,
-#                    txdb = txdb,
-#                    BSgenome = BSgenome,
-#                    egSYMBOL = egSYMBOL)
+# sigpeak <- dmdeepm6A(ip_bam,
+#                      input_bam,
+#                      sample_conditions = sample_conditions,
+#                      DefaultGenome = FALSE,
+#                      txdb = txdb,
+#                      BSgenome = BSgenome,
+#                      egSYMBOL = egSYMBOL)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
