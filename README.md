@@ -176,18 +176,23 @@ txdb <- TxDb.Rnorvegicus.UCSC.rn5.refGene
 library(BSgenome.Rnorvegicus.UCSC.rn5)  
 BSgenome <- BSgenome.Rnorvegicus.UCSC.rn5  
 ```
-` BSgenome ` is necessary if the genome is not hg19. If there is no public BSgenome data package for your own genome sequence, you can read your ".fa/.fasta" genome sequence file using readDNAStringSet function (e.g., BSgenome = readDNAStringSet(MyGenomeSeq.fa)), or forge a BSgenome data package following the instruction of "BSgenome" package.
+` BSgenome ` is necessary if the genome is not hg19. If there is no public BSgenome data package for your own genome sequence, you can forge a BSgenome data package following the instruction of "BSgenome" package, or input your ".fa/.fasta" genome sequence file using readDNAStringSet function as following:
+```
+BSgenome <- readDNAStringSet("My_Genome_Sequence.fa")
+names(BSgenome) <- sub(" .*", "", names(BSgenome)) ## Please make sure the names of chrome sequences are consistent with your genome annotation and input bams. 
+```
+Then input the ` egSYMBOL `, it can be set as NA, if there is no public egSYMBOL data package for your own species.
 ```
 library(org.Rn.eg.db)  
 egSYMBOL <- org.Rn.egSYMBOL  
 ```
-You can set ` egSYMBOL ` as NA, if there is no public egSYMBOL data package for your own species.
+Finally calling differential sites with ` dmdeepm6A ` function.
 ```
-sigpeak <- deepm6A(ip_bam,  
-                   input_bam,  
-                   sample_conditions = sample_conditions,  
-                   DefaultGenome = FALSE,  
-                   txdb = txdb,  
-                   BSgenome = BSgenome,  
-                   egSYMBOL = egSYMBOL)  
+sigpeak <- dmdeepm6A(ip_bam,  
+                     input_bam,  
+                     sample_conditions = sample_conditions,  
+                     DefaultGenome = FALSE,  
+                     txdb = txdb,  
+                     BSgenome = BSgenome,  
+                     egSYMBOL = egSYMBOL)  
 ```
