@@ -3,7 +3,7 @@ A R package used to identify single base resolution m6A and differential m6A met
 
 Version: 1.0.6
 
-Date: 2021-12-09
+Date: 2021-12-13
 
 Author: Songyao Zhang zsynwpu@gmail.com, Jia Meng Jia.Meng@xjtlu.edu.cn
 
