@@ -131,6 +131,8 @@ deepm6A <- function(IP_bam,
   peak <- .getpeakposition(peak, component, txdb, egSYMBOL, output_filepath)
   sigpeak <- peak[peak$score >=sigthresh,]
 
+  sigpeak$chromStart <- as.integer(sigpeak$chromStart)
+  sigpeak$chromEnd <- as.integer(sigpeak$chromEnd)
   write.table(sigpeak, file =  paste(output_filepath, "SigSingleBasePeak.xls" , sep = "/"),
               sep = "\t", row.names = FALSE, quote = FALSE)
 
@@ -138,8 +140,12 @@ deepm6A <- function(IP_bam,
   colnames(peakbed)[1] <- "# chr"
   sigpeakbed <- peakbed[peak$score >=sigthresh,]
 
+  peakbed$chromStart <- as.integer(peakbed$chromStart)
+  peakbed$chromEnd <- as.integer(peakbed$chromEnd)
   write.table(peakbed, file =  paste(output_filepath, "CandidateSingleBasePeak.bed" , sep = "/"),
               sep = "\t", row.names = FALSE, quote = FALSE)
+  sigpeakbed$chromStart <- as.integer(sigpeakbed$chromStart)
+  sigpeakbed$chromEnd <- as.integer(sigpeakbed$chromEnd)
   write.table(sigpeakbed, file =  paste(output_filepath, "SigSingleBasePeak.bed" , sep = "/"),
               sep = "\t", row.names = FALSE, quote = FALSE)
 

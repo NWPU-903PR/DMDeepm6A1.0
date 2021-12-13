@@ -66,7 +66,7 @@
 .getpeakposition <- function(peak, comp, txdb, egSYMBOL, outfilepath){
 
   peak_gr <- GRanges(as.character(peak$chr),
-                     IRanges(as.numeric(peak$chromEnd), width = 1),
+                     IRanges(as.integer(peak$chromEnd), width = 1),
                      as.character(peak$strand))
 
 
@@ -78,7 +78,7 @@
   ind <- tapply(start(y), mcols(y)$xHits, min)
 
   st <- 1:nrow(peak)
-  st <- as.numeric(ind[match(st, as.numeric(names(ind)))])
+  st <- as.integer(ind[match(st, as.integer(names(ind)))])
 
   TxStart <- st
   xls <- peak
@@ -96,7 +96,7 @@
     x = egSYMBOL
     mapped_genes <- mappedkeys(x)
     result <- as.list(x[mapped_genes])
-    entrez_id <- as.numeric(names(result))  # entrez ID
+    entrez_id <- as.integer(names(result))  # entrez ID
     gene_symbol <- as.character(result)     # gene symbol
     ID_convert <- data.frame(entrez_id,gene_symbol)
     id <- xls$name
@@ -108,6 +108,9 @@
 
   xls <- cbind(xls, gene_symbol)
   names(xls)[ncol(xls)] <- "GeneSymbol"
+
+  xls$chromStart <- as.integer(xls$chromStart)
+  xls$chromEnd <- as.integer(xls$chromEnd)
   write.table(xls, file =  paste(outfilepath, "CandidateSingleBasePeak.xls" , sep = "/"),
               sep = "\t", row.names = FALSE, quote = FALSE)
   return(xls)

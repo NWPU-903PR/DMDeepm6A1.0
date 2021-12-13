@@ -260,12 +260,16 @@
 
 .writeSiteAnno <- function(xls_anno, outfilepath, xls_name) {
 
+  xls_anno$chromStart <- as.integer(xls_anno$chromStart)
+  xls_anno$chromEnd <- as.integer(xls_anno$chromEnd)
   write.table(xls_anno, file =  paste(outfilepath, "/", xls_name, ".xls", sep = ""),
               sep = "\t", row.names = FALSE, quote = FALSE)
 
   peakbed <- xls_anno[,1:6]
   colnames(peakbed)[1] <- "# chr"
 
+  peakbed$chromStart <- as.integer(peakbed$chromStart)
+  peakbed$chromEnd <- as.integer(peakbed$chromEnd)
   write.table(peakbed, file =  paste(outfilepath, "/", xls_name, ".bed", sep = ""),
               sep = "\t", row.names = FALSE, quote = FALSE)
 }
